@@ -33,6 +33,8 @@ def decode_pipeline(artifact: EncodedArtifact, *, max_output_bytes: int = 64 * 1
         raise ValueError("this decoder accepts exact artifacts only")
     if max_output_bytes < 0:
         raise ValueError("max_output_bytes must be non-negative")
+    if artifact.source_size > max_output_bytes:
+        raise ValueError("declared source size exceeds max_output_bytes")
     payload = artifact.payload
     for stage in reversed(artifact.stages):
         codec = get_codec(stage.codec)
@@ -41,7 +43,8 @@ def decode_pipeline(artifact: EncodedArtifact, *, max_output_bytes: int = 64 * 1
                 f"codec version mismatch for {stage.codec}: "
                 f"artifact requests {stage.version}, installed {codec.version}"
             )
-        payload = codec.decode(payload, stage.parameters)
+        decode_parameters = {**stage.parameters, "_max_output_bytes": max_output_bytes}
+        payload = codec.decode(payload, decode_parameters)
         if len(payload) > max_output_bytes:
             raise ValueError("decoded output exceeds max_output_bytes")
     if len(payload) != artifact.source_size:
