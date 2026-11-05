@@ -72,4 +72,4 @@ def _zlib_decode(data: bytes, parameters: dict) -> bytes:
 
 
 register_codec(Codec("identity", "1", _identity_encode, _identity_decode))
-register_codec(Codec("zlib", zlib.ZLIB_VERSION, _zlib_encode, _zlib_decode))
+register_codec(Codec("zlib", "rfc1950-1", _zlib_encode, _zlib_decode))
