@@ -16,11 +16,9 @@ def test_identity_roundtrip():
 
 def test_zlib_roundtrip():
     source = (b"repeated structured data\x00" * 1000) + bytes(range(256))
-    import zlib
-
     artifact = encode_pipeline(
         source,
-        [PipelineStage("zlib", zlib.ZLIB_VERSION, {"level": 6})],
+        [PipelineStage("zlib", "rfc1950-1", {"level": 6})],
     )
     assert decode_pipeline(artifact) == source
     assert len(artifact.payload) < len(source)
@@ -28,11 +26,9 @@ def test_zlib_roundtrip():
 
 def test_pipeline_order_roundtrip():
     source = b"abcabcabc" * 200
-    import zlib
-
     stages = [
         PipelineStage("identity", "1", {}),
-        PipelineStage("zlib", zlib.ZLIB_VERSION, {"level": 9}),
+        PipelineStage("zlib", "rfc1950-1", {"level": 9}),
     ]
     assert decode_pipeline(encode_pipeline(source, stages)) == source
 
@@ -60,24 +56,20 @@ def test_codec_registry_is_explicit():
     assert {item["name"] for item in list_codecs()} >= {"identity", "zlib"}
 
 def test_zlib_decompression_limit_is_enforced():
-    import zlib
-
     source = b"z" * 100_000
     artifact = encode_pipeline(
         source,
-        [PipelineStage("zlib", zlib.ZLIB_VERSION, {"level": 9})],
+        [PipelineStage("zlib", "rfc1950-1", {"level": 9})],
     )
     with pytest.raises(ValueError, match="exceeds"):
         decode_pipeline(artifact, max_output_bytes=1024)
 
 
 def test_zlib_rejects_trailing_data():
-    import zlib
-
     source = b"strict stream validation"
     artifact = encode_pipeline(
         source,
-        [PipelineStage("zlib", zlib.ZLIB_VERSION, {})],
+        [PipelineStage("zlib", "rfc1950-1", {})],
     )
     altered = type(artifact)(
         payload=artifact.payload + b"trailing",
