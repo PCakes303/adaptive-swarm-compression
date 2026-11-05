@@ -2,7 +2,7 @@
 
 ## Current stage
 
-The project is experimental. Contributions should favor small, testable changes and reproducible evidence over speculative claims.
+The project is experimental. No open-source license has been selected yet, so external contributions and redistribution are not currently invited. Contributions should favor small, testable changes and reproducible evidence over speculative claims once the licensing terms are established.
 
 ## Before proposing a change
 
