@@ -2,7 +2,7 @@
 
 **Status:** Experimental · Early architecture and implementation scaffold
 
-An open-source research implementation exploring adaptive, collective compression and intelligent information representation across distributed agents and swarms.
+A public experimental research implementation exploring adaptive, collective compression and intelligent information representation across distributed agents and swarms.
 
 The project investigates a broader objective than minimizing bytes in an isolated file:
 
@@ -76,7 +76,7 @@ adaptive-swarm-compression/
     └── EXPERIMENTS.md
 ```
 
-This tree is the target scaffold; files will be added in staged commits and marked accurately as implemented or planned.
+This is the current initial repository layout; planned components are tracked in ROADMAP.md and are not represented as implemented.
 
 ## Initial research tracks
 
@@ -127,4 +127,8 @@ This repository is at the foundation stage. A research direction or planned inte
 
 ## Contributing
 
-See [CONTRIBUTING.md](CONTRIBUTING.md) for the intended contribution process once the initial development scaffold is in place. Until then, focused design discussions and reproducible experiments are preferred.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution requirements. The repository is public, but no open-source redistribution license has been selected yet; public visibility does not grant permission to reuse or redistribute the code. A license decision is required before external contributions or reuse are invited.
+
+## Licensing status
+
+**No open-source license has been granted yet.** The repository is publicly visible, but the current code remains under the default copyright rules until the owner selects and adds a license. Do not assume MIT or another license from repository visibility.
