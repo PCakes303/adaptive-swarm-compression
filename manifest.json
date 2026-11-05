@@ -9,9 +9,9 @@
   "maturity": "experimental",
   "summary": "Experimental local lossless codec pipelines and representation metadata for research into adaptive, collective information representation. Distributed swarm execution is not implemented.",
   "license": {
-    "expression": null,
-    "status": "pending-review",
-    "notes": "No open-source license has been selected. Public visibility does not grant redistribution rights; owner approval and provenance review are required before licensing."
+    "expression": "Apache-2.0",
+    "status": "approved-and-applied",
+    "notes": "Apache License 2.0 is included at LICENSE. File-level provenance and third-party notice review remains a separate release gate."
   },
   "interfaces": [
     {
@@ -34,13 +34,41 @@
     }
   ],
   "dependencies": [
-    {"id": "aix-codecs", "constraint": "*", "kind": "contract"},
-    {"id": "aix-core", "constraint": "*", "kind": "contract"},
-    {"id": "resource-manifest", "constraint": "*", "kind": "contract"},
-    {"id": "swarm-state-mesh", "constraint": "*", "kind": "contract"},
-    {"id": "swarm-runtime", "constraint": "*", "kind": "contract"},
-    {"id": "knowledge-graph", "constraint": "*", "kind": "contract"},
-    {"id": "audit-provenance", "constraint": "*", "kind": "contract"}
+    {
+      "id": "aix-codecs",
+      "constraint": "*",
+      "kind": "contract"
+    },
+    {
+      "id": "aix-core",
+      "constraint": "*",
+      "kind": "contract"
+    },
+    {
+      "id": "resource-manifest",
+      "constraint": "*",
+      "kind": "contract"
+    },
+    {
+      "id": "swarm-state-mesh",
+      "constraint": "*",
+      "kind": "contract"
+    },
+    {
+      "id": "swarm-runtime",
+      "constraint": "*",
+      "kind": "contract"
+    },
+    {
+      "id": "knowledge-graph",
+      "constraint": "*",
+      "kind": "contract"
+    },
+    {
+      "id": "audit-provenance",
+      "constraint": "*",
+      "kind": "contract"
+    }
   ],
   "entrypoints": [
     "src/adaptive_swarm_compression/__init__.py",
