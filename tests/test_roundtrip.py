@@ -79,3 +79,9 @@ def test_zlib_rejects_trailing_data():
     )
     with pytest.raises(ValueError, match="invalid or trailing"):
         decode_pipeline(altered)
+
+
+def test_zlib_codec_version_is_wire_format_not_library_build():
+    from adaptive_swarm_compression.registry import get_codec
+
+    assert get_codec("zlib").version == "rfc1950-1"
