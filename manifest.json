@@ -10,8 +10,8 @@
   "summary": "Experimental local lossless codec pipelines and representation metadata for research into adaptive, collective information representation. Distributed swarm execution is not implemented.",
   "license": {
     "expression": "Apache-2.0",
-    "status": "approved-and-applied",
-    "notes": "Apache License 2.0 is included at LICENSE. File-level provenance and third-party notice review remains a separate release gate."
+    "status": "selected",
+    "notes": "Apache License 2.0 is included at LICENSE and approved by the repository owner. File-level provenance and third-party notice review remains a separate release gate."
   },
   "interfaces": [
     {
