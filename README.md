@@ -50,6 +50,11 @@ The early implementation will favor transparent interfaces and reproducible base
 ```text
 adaptive-swarm-compression/
 ├── README.md
+├── AGENTS.md
+├── manifest.json
+├── capabilities.json
+├── compatibility.json
+├── llms.txt
 ├── ARCHITECTURE.md
 ├── ROADMAP.md
 ├── SECURITY.md
@@ -64,7 +69,8 @@ adaptive-swarm-compression/
 │       ├── pipeline.py
 ├── tests/
 │   ├── test_roundtrip.py
-│   └── test_benchmarks.py
+│   ├── test_benchmarks.py
+│   └── test_metadata.py
 ├── benchmarks/
 │   ├── __init__.py
 │   ├── README.md
@@ -73,7 +79,9 @@ adaptive-swarm-compression/
 ├── schemas/
 │   └── representation-capsule.schema.json
 └── docs/
-    └── EXPERIMENTS.md
+    ├── EXPERIMENTS.md
+    ├── THREAT-MODEL.md
+    └── ECOSYSTEM-INTEGRATION.md
 ```
 
 This is the current repository layout. The pipeline currently supports local identity and zlib lossless stages; swarm coordination, adaptive selection, and selective operations remain planned.
@@ -89,6 +97,13 @@ python -m benchmarks.run --size 262144 --seed 931
 ```
 
 The benchmark emits JSON for deterministic repetitive, structured-record, numeric-series, and random-byte workloads. It compares identity and zlib using one local sample per workload. This is a smoke-test baseline, not publishable performance evidence: it excludes serialized capsule metadata, indexes, dictionaries, network transfer, coordination, replication, and recovery. Repeat runs and broaden the accounting boundary before drawing conclusions.
+
+## Machine-readable repository contracts
+
+- [Repository manifest](manifest.json) — identity, version, dependencies, license status, security boundaries, and evidence.
+- [Capabilities](capabilities.json) — current scaffolded capabilities, planned work, and explicit non-capabilities.
+- [Compatibility](compatibility.json) — declared ecosystem relationships; no cross-repository combination is marked tested.
+- [Agent index](llms.txt) and [agent instructions](AGENTS.md) — machine discovery and safe contribution guidance.
 
 ## Initial research tracks
 
