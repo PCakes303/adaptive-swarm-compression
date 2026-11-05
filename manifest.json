@@ -1,0 +1,81 @@
+{
+  "$schema": "https://github.com/PCakes303/agent-intelligence-ecosystem/blob/main/schemas/repository-manifest.schema.json",
+  "$id": "https://github.com/PCakes303/adaptive-swarm-compression/blob/main/manifest.json",
+  "manifest_version": "1.0.0",
+  "id": "adaptive-swarm-compression",
+  "name": "adaptive-swarm-compression",
+  "version": "0.1.0",
+  "visibility": "public",
+  "maturity": "experimental",
+  "summary": "Experimental local lossless codec pipelines and representation metadata for research into adaptive, collective information representation. Distributed swarm execution is not implemented.",
+  "license": {
+    "expression": null,
+    "status": "pending-review",
+    "notes": "No open-source license has been selected. Public visibility does not grant redistribution rights; owner approval and provenance review are required before licensing."
+  },
+  "interfaces": [
+    {
+      "name": "local-lossless-codec-pipeline",
+      "version": "0.1.0",
+      "kind": "library",
+      "stability": "experimental"
+    },
+    {
+      "name": "representation-capsule",
+      "version": "0.1.0",
+      "kind": "json-schema",
+      "stability": "draft"
+    },
+    {
+      "name": "local-benchmark-report",
+      "version": "0.1.0",
+      "kind": "document",
+      "stability": "experimental"
+    }
+  ],
+  "dependencies": [
+    {"id": "aix-codecs", "constraint": "*", "kind": "contract"},
+    {"id": "aix-core", "constraint": "*", "kind": "contract"},
+    {"id": "resource-manifest", "constraint": "*", "kind": "contract"},
+    {"id": "swarm-state-mesh", "constraint": "*", "kind": "contract"},
+    {"id": "swarm-runtime", "constraint": "*", "kind": "contract"},
+    {"id": "knowledge-graph", "constraint": "*", "kind": "contract"},
+    {"id": "audit-provenance", "constraint": "*", "kind": "contract"}
+  ],
+  "entrypoints": [
+    "src/adaptive_swarm_compression/__init__.py",
+    "python -m benchmarks.run"
+  ],
+  "security": {
+    "threat_model": "docs/THREAT-MODEL.md",
+    "secrets_in_repository": false,
+    "data_classification": "public",
+    "security_contact": null,
+    "network_access": false,
+    "collection": false,
+    "automated_inference": false
+  },
+  "repository_url": "https://github.com/PCakes303/adaptive-swarm-compression",
+  "default_branch": "main",
+  "compatibility": [],
+  "evidence": [
+    {
+      "claim": "Local exact codec pipeline, bounded zlib decoding, and source digest verification are implemented in the initial package.",
+      "kind": "specification",
+      "location": "src/adaptive_swarm_compression/"
+    },
+    {
+      "claim": "Regression tests are present for round trips, integrity, malformed streams, output limits, deterministic workloads, and benchmark exactness; latest remote CI result is not yet verified.",
+      "kind": "test",
+      "location": "tests/"
+    }
+  ],
+  "execution_authority": false,
+  "compliance_certification": false,
+  "layer": "research-and-data-systems",
+  "runtime": {
+    "language": "Python",
+    "minimum_version": "3.10",
+    "third_party_dependencies": []
+  }
+}
