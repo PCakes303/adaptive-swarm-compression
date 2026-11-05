@@ -1,0 +1,45 @@
+# Adaptive Swarm Compression — Agent Index
+
+> Public experimental implementation for local lossless codec pipelines, representation metadata, and reproducible baseline experiments. No distributed swarm behavior is currently implemented.
+
+## Machine-readable entrypoints
+
+- `manifest.json`: repository identity, version, dependencies, license status, security boundaries, and evidence.
+- `capabilities.json`: implemented, scaffolded, planned, and explicitly unsupported capabilities.
+- `compatibility.json`: declared ecosystem relationships and tested combinations.
+- `schemas/representation-capsule.schema.json`: proposed representation metadata schema.
+- `AGENTS.md`: repository-specific instructions for coding agents.
+
+## Human and engineering documentation
+
+- `README.md`: project overview, current implementation, benchmark usage, and boundaries.
+- `ARCHITECTURE.md`: component boundaries and planned evolution.
+- `ROADMAP.md`: staged milestones and exit gates.
+- `SECURITY.md` and `docs/THREAT-MODEL.md`: security policy and threat analysis.
+- `docs/ECOSYSTEM-INTEGRATION.md`: declared relationships to existing ecosystem repositories.
+- `docs/EXPERIMENTS.md`: experiment register and status.
+- `benchmarks/README.md`: benchmark instructions and measurement limits.
+
+## Current capabilities
+
+- Local identity and zlib exact codec stages.
+- Ordered local lossless pipeline.
+- Source-size and SHA-256 reconstruction checks.
+- Bounded zlib decompression.
+- Deterministic synthetic workloads and local baseline benchmark output.
+
+## Explicit non-capabilities
+
+No distributed execution, shared dictionary exchange, adaptive pipeline compiler, selective graph reconstruction, general computation over arbitrary compressed bytes, authentication, authorization, or production readiness.
+
+## Build and verify
+
+```bash
+python -m pip install -e ".[dev]"
+python -m pytest -q
+python -m benchmarks.run --size 262144 --seed 931
+```
+
+## Ecosystem integration
+
+The master ecosystem registry is authoritative for dependency identifiers. Declared dependencies do not imply tested interoperability. See `compatibility.json`.
