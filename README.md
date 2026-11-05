@@ -159,3 +159,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution requirements. The reposi
 ## Licensing status
 
 **No open-source license has been granted yet.** The repository is publicly visible, but the current code remains under the default copyright rules until the owner selects and adds a license. Do not assume MIT or another license from repository visibility.
+
+## License
+
+This project is licensed under the Apache License 2.0. See [LICENSE](LICENSE). This repository-level license statement does not replace file-level provenance or third-party notice review.
