@@ -18,11 +18,15 @@ _CODECS: dict[str, Codec] = {}
 
 
 def register_codec(codec: Codec) -> None:
-    """Register a codec. Re-registering a name replaces its implementation."""
+    """Register a codec without allowing an existing name to be shadowed."""
     if not codec.name or not codec.version:
         raise ValueError("codec name and version are required")
     if codec.guarantee != "exact":
         raise ValueError("the initial pipeline supports exact codecs only")
+    if not callable(codec.encode) or not callable(codec.decode):
+        raise TypeError("codec encode and decode members must be callable")
+    if codec.name in _CODECS:
+        raise ValueError(f"codec already registered: {codec.name}")
     _CODECS[codec.name] = codec
 
 
