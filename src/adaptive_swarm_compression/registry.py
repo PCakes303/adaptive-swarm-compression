@@ -56,9 +56,16 @@ def _zlib_encode(data: bytes, parameters: dict) -> bytes:
 
 
 def _zlib_decode(data: bytes, parameters: dict) -> bytes:
+    limit = int(parameters.get("_max_output_bytes", 64 * 1024 * 1024))
+    if limit < 0:
+        raise ValueError("max output size must be non-negative")
     decoder = zlib.decompressobj()
-    output = decoder.decompress(data)
+    output = decoder.decompress(data, limit + 1)
+    if len(output) > limit or decoder.unconsumed_tail:
+        raise ValueError("decoded output exceeds max_output_bytes")
     output += decoder.flush()
+    if len(output) > limit:
+        raise ValueError("decoded output exceeds max_output_bytes")
     if not decoder.eof or decoder.unused_data or decoder.unconsumed_tail:
         raise ValueError("invalid or trailing zlib stream data")
     return output
