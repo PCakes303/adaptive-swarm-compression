@@ -6,7 +6,6 @@ build-backend = "setuptools.build_meta"
 name = "adaptive-swarm-compression"
 version = "0.1.0"
 description = "Experimental adaptive and collective information representation primitives"
-license = "LicenseRef-Proprietary"
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [{ name = "MrCakes931" }]
