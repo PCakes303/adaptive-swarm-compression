@@ -44,7 +44,7 @@
   ],
   "entrypoints": [
     "src/adaptive_swarm_compression/__init__.py",
-    "python -m benchmarks.run"
+    "benchmarks/run.py"
   ],
   "security": {
     "threat_model": "docs/THREAT-MODEL.md",
