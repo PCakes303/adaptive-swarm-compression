@@ -1,0 +1,16 @@
+{
+  "compatibility_version": "1.1.0",
+  "repository": "adaptive-swarm-compression",
+  "policy": "Dependencies are architectural relationships only. They do not establish runtime interoperability. A dependency becomes tested only after pinned, reproducible cross-repository tests and evidence are published.",
+  "dependencies": [
+    {"repository_id": "aix-codecs", "version_range": "Contract version not yet pinned", "status": "declared", "evidence": []},
+    {"repository_id": "aix-core", "version_range": "Representation negotiation contract not yet pinned", "status": "declared", "evidence": []},
+    {"repository_id": "resource-manifest", "version_range": "Manifest contract 1.0.0; compatibility not tested", "status": "declared", "evidence": []},
+    {"repository_id": "swarm-state-mesh", "version_range": "State and reference contract not yet pinned", "status": "declared", "evidence": []},
+    {"repository_id": "swarm-runtime", "version_range": "Execution contract not yet pinned", "status": "declared", "evidence": []},
+    {"repository_id": "knowledge-graph", "version_range": "Graph representation contract not yet pinned", "status": "declared", "evidence": []},
+    {"repository_id": "audit-provenance", "version_range": "Provenance event contract not yet pinned", "status": "declared", "evidence": []}
+  ],
+  "tested_combinations": [],
+  "breaking_change_policy": "Major versions may change representation or reconstruction semantics; minor versions add backward-compatible fields and capabilities; patch versions correct non-semantic defects. Never silently change an exactness guarantee."
+}
