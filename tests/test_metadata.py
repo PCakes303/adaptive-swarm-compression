@@ -27,7 +27,8 @@ def test_manifest_capabilities_and_compatibility_align():
     assert manifest["id"] == "adaptive-swarm-compression"
     assert manifest["visibility"] == "public"
     assert manifest["maturity"] == "experimental"
-    assert manifest["license"]["status"] == "pending-review"
+    assert manifest["license"]["expression"] == "Apache-2.0"
+    assert manifest["license"]["status"] == "approved-and-applied"
     assert capabilities["repository_id"] == manifest["id"]
     assert compatibility["repository"] == manifest["id"]
 
