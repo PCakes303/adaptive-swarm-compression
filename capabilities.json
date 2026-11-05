@@ -1,0 +1,69 @@
+{
+  "capabilities_version": "1.1.0",
+  "repository": "adaptive-swarm-compression",
+  "repository_id": "adaptive-swarm-compression",
+  "maturity": "experimental",
+  "capabilities": [
+    {
+      "id": "compression.codec.identity",
+      "name": "Identity lossless codec",
+      "status": "scaffolded",
+      "description": "Passes input bytes through unchanged as a baseline codec.",
+      "evidence": ["src/adaptive_swarm_compression/registry.py", "tests/test_roundtrip.py"]
+    },
+    {
+      "id": "compression.codec.zlib",
+      "name": "Zlib RFC 1950 stream codec",
+      "status": "scaffolded",
+      "description": "Encodes and decodes lossless zlib-wrapped DEFLATE streams with a stable wire-format identifier and bounded decompression output.",
+      "evidence": ["src/adaptive_swarm_compression/registry.py", "tests/test_roundtrip.py"]
+    },
+    {
+      "id": "compression.pipeline.local",
+      "name": "Local ordered lossless codec pipeline",
+      "status": "scaffolded",
+      "description": "Applies ordered codec stages and verifies reconstructed source size and SHA-256 digest.",
+      "evidence": ["src/adaptive_swarm_compression/pipeline.py", "tests/test_roundtrip.py"]
+    },
+    {
+      "id": "compression.benchmark.local",
+      "name": "Deterministic local baseline benchmark",
+      "status": "scaffolded",
+      "description": "Generates deterministic synthetic workloads and compares local identity and zlib payload sizes, timings, traced peak memory, and exact reconstruction.",
+      "evidence": ["benchmarks/workloads.py", "benchmarks/run.py", "tests/test_benchmarks.py"],
+      "limitations": [
+        "One local sample per workload/codec is a smoke-test baseline, not publishable performance evidence.",
+        "Does not include serialized capsule metadata, indexes, dictionaries, network transfer, coordination, replication, or recovery."
+      ]
+    },
+    {
+      "id": "representation.capsule.schema",
+      "name": "Representation Capsule JSON Schema",
+      "status": "scaffolded",
+      "description": "Proposed JSON Schema for describing representation identity, exactness guarantees, pipeline stages, dependencies, reconstruction, operations, integrity, and provenance.",
+      "evidence": ["schemas/representation-capsule.schema.json"],
+      "limitations": [
+        "Schema validation and compatibility policy are not yet integrated into CI.",
+        "A valid capsule is not proof that its claims or dependencies are trustworthy."
+      ]
+    },
+    {
+      "id": "compression.pipeline.adaptive",
+      "name": "Adaptive pipeline selection",
+      "status": "planned",
+      "description": "Selects compatible representation stages under workload, exactness, resource, and trust constraints.",
+      "evidence": [],
+      "limitations": ["No pipeline compiler or adaptive selector is implemented."]
+    }
+  ],
+  "explicit_non_capabilities": [
+    "Distributed swarm execution or scheduling",
+    "Shared dictionary exchange or synchronization",
+    "Content-addressed distributed storage",
+    "Selective graph or event reconstruction",
+    "General computation over arbitrary compressed data",
+    "Lossy or semantic compression",
+    "Authentication, authorization, or trust establishment",
+    "Production deployment or performance superiority claims"
+  ]
+}
