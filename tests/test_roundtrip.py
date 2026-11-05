@@ -85,3 +85,10 @@ def test_zlib_codec_version_is_wire_format_not_library_build():
     from adaptive_swarm_compression.registry import get_codec
 
     assert get_codec("zlib").version == "rfc1950-1"
+
+
+def test_codec_registry_rejects_name_shadowing():
+    from adaptive_swarm_compression.registry import Codec, register_codec
+
+    with pytest.raises(ValueError, match="already registered: zlib"):
+        register_codec(Codec("zlib", "attacker-version", lambda data, params: data, lambda data, params: data))
