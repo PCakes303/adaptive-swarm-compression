@@ -7,6 +7,8 @@
 - [x] Implement pipeline encode/decode with integrity verification.
 - [x] Add round-trip, integrity, malformed-stream, and output-limit tests.
 - [x] Add deterministic local baseline benchmark command (narrow measurement boundary; CI confirmation pending).
+- [x] Add repository manifest, capability declarations, compatibility metadata, agent instructions, and machine-readable discovery index.
+- [x] Add local metadata-consistency regression tests; master schema validation and CI confirmation remain pending.
 
 ## 0.2 — Representation contracts
 - Add versioned representation capsule validation.
