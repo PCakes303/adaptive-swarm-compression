@@ -54,7 +54,6 @@ adaptive-swarm-compression/
 ├── ROADMAP.md
 ├── SECURITY.md
 ├── CONTRIBUTING.md
-├── LICENSE
 ├── pyproject.toml
 ├── .gitignore
 ├── src/
@@ -66,9 +65,11 @@ adaptive-swarm-compression/
 │       └── metrics.py
 ├── tests/
 │   ├── test_roundtrip.py
-│   └── test_pipeline.py
+│   └── test_benchmarks.py
 ├── benchmarks/
+│   ├── __init__.py
 │   ├── README.md
+│   ├── run.py
 │   └── workloads.py
 ├── schemas/
 │   └── representation-capsule.schema.json
@@ -76,7 +77,19 @@ adaptive-swarm-compression/
     └── EXPERIMENTS.md
 ```
 
-This is the current initial repository layout; planned components are tracked in ROADMAP.md and are not represented as implemented.
+This is the current repository layout. The pipeline currently supports local identity and zlib lossless stages; swarm coordination, adaptive selection, and selective operations remain planned.
+
+## Running the baseline benchmark
+
+Install the development dependencies and run:
+
+```bash
+python -m pip install -e ".[dev]"
+python -m pytest -q
+python -m benchmarks.run --size 262144 --seed 931
+```
+
+The benchmark emits JSON for deterministic repetitive, structured-record, numeric-series, and random-byte workloads. It compares identity and zlib using one local sample per workload. This is a smoke-test baseline, not publishable performance evidence: it excludes serialized capsule metadata, indexes, dictionaries, network transfer, coordination, replication, and recovery. Repeat runs and broaden the accounting boundary before drawing conclusions.
 
 ## Initial research tracks
 
