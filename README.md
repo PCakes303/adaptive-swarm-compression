@@ -62,7 +62,6 @@ adaptive-swarm-compression/
 │       ├── models.py
 │       ├── registry.py
 │       ├── pipeline.py
-│       └── metrics.py
 ├── tests/
 │   ├── test_roundtrip.py
 │   └── test_benchmarks.py
