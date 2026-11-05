@@ -58,3 +58,32 @@ def test_output_limit_is_enforced():
 
 def test_codec_registry_is_explicit():
     assert {item["name"] for item in list_codecs()} >= {"identity", "zlib"}
+
+def test_zlib_decompression_limit_is_enforced():
+    import zlib
+
+    source = b"z" * 100_000
+    artifact = encode_pipeline(
+        source,
+        [PipelineStage("zlib", zlib.ZLIB_VERSION, {"level": 9})],
+    )
+    with pytest.raises(ValueError, match="exceeds"):
+        decode_pipeline(artifact, max_output_bytes=1024)
+
+
+def test_zlib_rejects_trailing_data():
+    import zlib
+
+    source = b"strict stream validation"
+    artifact = encode_pipeline(
+        source,
+        [PipelineStage("zlib", zlib.ZLIB_VERSION, {})],
+    )
+    altered = type(artifact)(
+        payload=artifact.payload + b"trailing",
+        stages=artifact.stages,
+        source_sha256=artifact.source_sha256,
+        source_size=artifact.source_size,
+    )
+    with pytest.raises(ValueError, match="invalid or trailing"):
+        decode_pipeline(altered)
