@@ -2,11 +2,11 @@
 
 ## 0.1 — Local foundation
 - [x] Establish project scope and technical boundaries.
-- [ ] Define stable codec interface.
-- [ ] Implement identity and zlib lossless codecs.
-- [ ] Implement pipeline encode/decode with integrity verification.
-- [ ] Add round-trip and malformed-input tests.
-- [ ] Add reproducible baseline benchmark command.
+- [x] Define stable codec interface (local exact-codec contract).
+- [x] Implement identity and zlib lossless codecs.
+- [x] Implement pipeline encode/decode with integrity verification.
+- [x] Add round-trip, integrity, malformed-stream, and output-limit tests.
+- [x] Add deterministic local baseline benchmark command (narrow measurement boundary; CI confirmation pending).
 
 ## 0.2 — Representation contracts
 - Add versioned representation capsule validation.
